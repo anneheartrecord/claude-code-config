@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Edit(*)",
+      "Write(*)",
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "Glob(*)",
+      "Grep(*)",
+      "NotebookEdit(*)",
+      "Agent(*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf /*)",
+      "Bash(git push --force origin main)",
+      "Bash(git push --force origin master)"
+    ]
+  },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  }
+}
