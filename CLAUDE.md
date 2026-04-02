@@ -13,15 +13,29 @@
 - 使用第一性原理思考问题，从最基本的事实出发推导，不依赖类比或惯例
 - 不知道的事情明确回答"我不知道"，不编造、不猜测
 
+## 代码质量规则
+- 单个文件不超过 500 行，超过必须拆分
+- 函数必须有清晰的注释说明用途、参数、返回值
+- 禁止使用 any 类型，必须给出明确的类型定义
+- 变量命名必须有语义，禁止 a、b、c、temp、data 等无意义命名
+- 每次修改代码后，检查是否引入了重复逻辑，有则提取为公共函数
+- 错误处理不能用空 catch，必须有日志或明确的处理逻辑
+
+## 安全规则
+- 不要在代码中硬编码密钥、token、密码等敏感信息
+- 涉及用户输入的地方必须做校验和转义
+- 数据库操作必须使用参数化查询，禁止字符串拼接 SQL
+
 ## Git 提交规则
 - 提交时不要加 `Co-Authored-By` 行
-- commit message 用英文，简洁明了
+- commit message 用英文，格式：`type: description`
+- type 包括：feat / fix / refactor / docs / test / chore
 
 ## GitHub 仓库规范
-- 每个仓库必须有中英文双语 README：`README.md`（中文主体）+ `README_EN.md`（英文版）
+- 每个仓库必须有中英文双语 README：`README.md` + `README_EN.md`
 - 中文 README 顶部添加语言切换链接：`[English](./README_EN.md)`
 - 英文 README 顶部添加语言切换链接：`[中文](./README.md)`
-- README 标题下方必须添加 shields.io badge，至少包含 License、项目核心指标、Language 等
+- README 标题下方必须添加 shields.io badge，至少包含 License、Language
 
 ## 写作任务规范
 - 接收到用户的核心论点后，可根据实际情况补充其他核心论点，丰富文章内容

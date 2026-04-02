@@ -50,6 +50,9 @@ cp "$SCRIPT_DIR/mcp_servers.json" "$CLAUDE_DIR/mcp_servers.json"
 echo "   ✅ mcp_servers.json → MCP 工具配置"
 
 echo ""
+echo "📋 项目级配置示例已放在仓库 examples/ 目录，需要时手动复制到项目根目录"
+
+echo ""
 echo "================================"
 echo "🎉 安装完成！"
 echo ""

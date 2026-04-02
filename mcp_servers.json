@@ -2,6 +2,19 @@
   "playwright": {
     "type": "stdio",
     "command": "npx",
-    "args": ["-y", "@playwright/mcp@latest"]
+    "args": ["-y", "@playwright/mcp@latest"],
+    "description": "浏览器自动化，截图、填表、爬取页面"
+  },
+  "context7": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@upstash/context7-mcp@latest"],
+    "description": "查询第三方库的最新文档，避免模型用过时 API"
+  },
+  "sequential-thinking": {
+    "type": "stdio",
+    "command": "npx",
+    "args": ["-y", "@anthropic/sequential-thinking-mcp@latest"],
+    "description": "强制模型做多步推理，适合复杂架构决策"
   }
 }

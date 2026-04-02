@@ -7,145 +7,111 @@
 ![Language](https://img.shields.io/badge/language-中文%20%7C%20English-orange)
 ![Config](https://img.shields.io/badge/config-battle--tested-red)
 
-大部分人装完 Claude Code 之后做的第一件事是什么？找别人的配置抄。
+装完 Claude Code，第一件事找别人的配置抄。这很正常。
 
-这很正常。Claude Code 的配置体系非常灵活，settings.json、CLAUDE.md、Skills、MCP、Hooks 五个维度加在一起，组合空间巨大。但官方文档只告诉你每个选项是什么意思，不告诉你应该怎么配。**从能用到好用，中间差的就是一份经过实战验证的配置。**
+settings.json、CLAUDE.md、Skills、MCP、Hooks 五个维度，组合空间巨大，官方文档只告诉你每个选项是什么意思，不告诉你怎么配才好用。**从能用到好用，中间差的就是一份经过实战验证的配置。**
 
-这个仓库是我作为 Claude Code 重度用户的完整配置，每一条都附带了为什么这么配的解释。
-
-## 一行命令安装
+## 一行安装
 
 ```bash
 git clone https://github.com/anneheartrecord/claude-code-config.git && cd claude-code-config && bash install.sh
 ```
 
-`install.sh` 会自动备份你的现有配置，然后把核心文件复制到 `~/.claude/`。安装完重启 Claude Code 即可生效。
+自动备份现有配置 → 复制到 `~/.claude/` → 重启生效。
 
-## 配置概览
+## 这份配置做了什么
 
-### 1️⃣ settings.json：权限与行为
+### 1️⃣ settings.json：效率拉满，底线守住
 
-```json
-{
-  "permissions": {
-    "defaultMode": "bypassPermissions",
-    "allow": [
-      "Bash(*)", "Read(*)", "Edit(*)", "Write(*)",
-      "WebFetch(*)", "WebSearch(*)", "Glob(*)", "Grep(*)",
-      "NotebookEdit(*)", "Agent(*)"
-    ],
-    "deny": [
-      "Bash(rm -rf /)",
-      "Bash(rm -rf /*)",
-      "Bash(git push --force origin main)",
-      "Bash(git push --force origin master)"
-    ]
-  },
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  }
-}
-```
+| 配置项 | 值 | 为什么 |
+|-------|---|-------|
+| defaultMode | `bypassPermissions` | 个人开发机，弹窗确认打断心流，全部放开 |
+| allow | 全部 10 个工具 | bypassPermissions 下不需要，但切模式时兜底 |
+| deny | 12 条不可逆操作 | `rm -rf /`、`git push --force`、`git reset --hard`、`chmod 777`、`dd`、`mkfs` |
+| hooks | PreToolUse 拦截 | 二次防护，双保险拦截危险 rm 命令 |
+| attribution | 空字符串 | 关掉 commit 里的 Co-Authored-By 签名 |
 
-**为什么用 bypassPermissions？** 个人开发机场景，每次工具调用都弹窗确认严重打断心流。bypassPermissions 让 Agent 自由执行，效率提升巨大。如果你是在共用机器上或企业环境，建议用 `acceptEdits` 模式。
+**核心思路：收益可以激进追求，风险必须有硬性止损。**
 
-**为什么 allow 列了所有工具？** bypassPermissions 下其实不需要 allow 列表，但显式列出有两个好处：临时切到其他权限模式时这些规则仍然生效；让配置的意图更清晰。
+### 2️⃣ CLAUDE.md：Agent 的操作手册
 
-**为什么 deny 只有四条？** 这四条是真正不可逆的底线。`rm -rf /` 防误删根目录，`git push --force origin main/master` 防误覆盖主分支历史。
+这是 Claude Code 里 **最重要的文件**。Agent 每次启动都会读它，你写什么它就照做。
 
-**attribution.commit 为什么是空字符串？** 关掉 commit message 里自动添加的 `Co-Authored-By: Claude` 签名。
+模板包含 8 个板块：
 
-### 2️⃣ CLAUDE.md：全局指令记忆
+| 板块 | 作用 |
+|-----|------|
+| 用户画像 | 告诉 Agent 你是谁，它会适配你的技术水平 |
+| 语言偏好 | 不确定用什么语言时会问你，而不是猜 |
+| 思维方式 | 第一性原理 + 不知道就说不知道，**这两条极其重要** |
+| 代码质量规则 | 单文件 500 行上限、禁止 any、禁止空 catch |
+| 安全规则 | 禁止硬编码密钥、必须参数化查询 |
+| Git 规则 | commit 格式、不加 Co-Authored-By |
+| GitHub 规范 | 双语 README、shields.io badge |
+| 项目目录 | 常用项目路径，Agent 直接定位 |
 
-这是 Claude Code 配置中**最重要的文件**，决定了 Agent 的行为模式和工作规范。
+安装后 **必须改** `<占位符>` 里的个人信息。
 
-仓库里提供了一份**模板**，包含以下板块：
+### 3️⃣ writing-style.md：写作风格 DNA
 
-**用户画像。** 告诉 Agent 你是谁、做什么工作。Agent 会自动适配你的技术背景和专业水平。
-
-**语言偏好。** 明确告诉 Agent 你常用的编程语言。需求不明确时 Agent 会主动问，而不是自己猜。
-
-**思维方式。** 要求 Agent 用第一性原理思考，不知道的事情直接说不知道。**这两条极其重要。** 没有这个约束，Agent 会倾向于给你一个听起来合理但可能是编造的答案。
-
-**Git 提交规则。** 提交时的行为约定，比如是否加 Co-Authored-By、commit message 格式等。
-
-**GitHub 仓库规范。** 比如中英双语 README、shields.io badge。写进 CLAUDE.md 后 Agent 每次创建仓库都会自动遵循。
-
-**写作任务规范。** 如果你用 Claude Code 做写作，可以定义输出格式和扩展规则。
-
-**项目目录。** 列出常用项目的路径，Agent 可以快速定位，不需要每次都问。
-
-安装后请根据你的实际情况**修改 CLAUDE.md 中的个人信息**。模板里的内容是示例，你需要替换成自己的。
-
-### 3️⃣ writing-style.md：写作风格 DNA（可选）
-
-如果你用 Claude Code 做大量写作，可以把你的写作风格提炼成一份画像文件。需要时让 Agent 读取：
+用 Claude Code 写作的人才需要这个。把你的写作风格提炼成画像，需要时让 Agent 读取：
 
 ```
 读一下 ~/.claude/writing-style.md，用我的风格写一篇关于 xxx 的文章
 ```
 
-**为什么不放在 CLAUDE.md 里？** 写作风格只在写作时有用，放在 CLAUDE.md 里每次对话都会加载，白白消耗 token。单独放一个文件按需加载更高效。
+为什么不塞进 CLAUDE.md？写作风格只有写作时有用，放 CLAUDE.md 每次对话都加载，白白烧 token。**记忆分层，按需加载。**
 
-仓库里的 writing-style.md 是模板，你可以用 `/extract-memory` Skill 从自己的文章中自动提取风格画像。
+### 4️⃣ mcp_servers.json：三个 MCP 工具
 
-### 4️⃣ mcp_servers.json：外部工具
+| 工具 | 干什么 |
+|------|-------|
+| **Playwright** | 浏览器自动化，截图、填表、爬页面 |
+| **Context7** | 查第三方库最新文档，防止模型用过时 API |
+| **Sequential Thinking** | 强制多步推理，适合复杂架构决策 |
 
-```json
-{
-  "playwright": {
-    "type": "stdio",
-    "command": "npx",
-    "args": ["-y", "@playwright/mcp@latest"]
-  }
-}
-```
+### 5️⃣ 项目级配置示例
 
-目前只配了 Playwright 做浏览器自动化。MCP 生态还在早期，大部分需求 Claude Code 内置工具就能覆盖。
+`examples/project-CLAUDE.md` 提供了一份项目级配置模板。放在项目根目录，只对当前项目生效，团队共享。
 
-### 5️⃣ 推荐 Skills
+包含项目信息、代码规范、测试要求、目录结构、部署命令。直接抄，改成你的项目信息就能用。
 
-| Skill 集合 | 安装命令 | 包含什么 |
-|-----------|---------|---------|
-| **baoyu-skills** | `gh repo clone JimLiu/baoyu-skills /tmp/bs && cp -r /tmp/bs/skills/* ~/.claude/skills/` | 翻译、发推、生成图片、YouTube 转录等 19 个 |
-| **follow-builders** | `gh repo clone zarazhangrui/follow-builders ~/.claude/skills/follow-builders` | AI 行业 builder 动态追踪 |
-| **frontend-design** | `gh repo clone anthropics/skills /tmp/as && cp -r /tmp/as/skills/frontend-design ~/.claude/skills/` | Anthropic 官方前端设计 Skill |
+### 6️⃣ 推荐 Skills
 
-安装后重启 Claude Code 即可识别新 Skill。
+| Skill | 安装 | 内容 |
+|-------|------|------|
+| **baoyu-skills** | `gh repo clone JimLiu/baoyu-skills /tmp/bs && cp -r /tmp/bs/skills/* ~/.claude/skills/` | 翻译、发推、生图等 19 个 |
+| **follow-builders** | `gh repo clone zarazhangrui/follow-builders ~/.claude/skills/follow-builders` | AI builder 动态追踪 |
+| **frontend-design** | `gh repo clone anthropics/skills /tmp/as && cp -r /tmp/as/skills/frontend-design ~/.claude/skills/` | Anthropic 官方前端设计 |
 
 ## 仓库结构
 
 ```
 claude-code-config/
-├── install.sh                   # 一键安装脚本
-├── README.md                    # 你在看的这个文件
-├── README_EN.md                 # English version
-├── settings.json                # 权限和行为配置
-├── CLAUDE.md                    # 全局指令记忆（模板）
-├── writing-style.md             # 写作风格 DNA（模板，可选）
-└── mcp_servers.json             # MCP 工具配置
+├── install.sh                          # 一键安装
+├── settings.json                       # 权限 + Hooks + deny 规则
+├── CLAUDE.md                           # 全局指令模板
+├── writing-style.md                    # 写作风格模板
+├── mcp_servers.json                    # MCP 工具配置
+├── examples/
+│   └── project-CLAUDE.md               # 项目级配置示例
+├── README.md                           # 中文
+└── README_EN.md                        # English
 ```
 
 ## 配置哲学
 
-**效率优先，安全兜底。** bypassPermissions 追求极致效率，deny 规则守住不可逆操作的底线。收益可以激进追求，但风险必须有硬性止损。
+**效率优先，安全兜底。** bypassPermissions 追求极致效率，12 条 deny + Hooks 双保险守住底线。
 
-**显式优于隐式。** CLAUDE.md 里的每一条规则都是明确的指令，不依赖 Agent 猜测你的偏好。你写得越清楚，Agent 的表现越稳定。
+**显式优于隐式。** 你写得越清楚，Agent 表现越稳定。不要指望它猜你的偏好。
 
-**记忆分层，按需加载。** 全局规则放 CLAUDE.md，写作风格放独立文件，项目特定规则放项目级 CLAUDE.md。不同层级的信息有不同的加载策略，避免上下文浪费。
+**记忆分层，按需加载。** 全局规则放 CLAUDE.md，写作风格放独立文件，项目规范放项目级 CLAUDE.md。不同层级不同加载策略，不浪费上下文。
 
-## 适合谁
+## 适合谁 / 不适合谁
 
-- 刚装完 Claude Code 不知道怎么配的新手
-- 用了一段时间但觉得 Agent 不够听话的老用户
-- 想参考别人配置思路的开发者
-- 同时用 Claude Code 做开发和写作的人
+**适合：** 个人开发机上追求效率的 Claude Code 用户。
 
-## 不适合谁
-
-- 需要严格权限管控的企业环境，bypassPermissions 不适合多人共用的机器
-- 只用 Claude Code 做简单问答的用户，默认配置就够了
+**不适合：** 企业环境、共用机器、需要严格权限管控的场景。bypassPermissions 是给信任自己开发环境的人用的。
 
 ## License
 
