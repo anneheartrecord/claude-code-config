@@ -37,7 +37,7 @@ git clone https://github.com/anneheartrecord/claude-code-config.git && cd claude
 
 这是 Claude Code 里 **最重要的文件**。Agent 每次启动都会读它，你写什么它就照做。
 
-模板包含 8 个板块：
+模板包含 10 个板块：
 
 | 板块 | 作用 |
 |-----|------|
@@ -48,6 +48,8 @@ git clone https://github.com/anneheartrecord/claude-code-config.git && cd claude
 | 安全规则 | 禁止硬编码密钥、必须参数化查询 |
 | Git 规则 | commit 格式、不加 Co-Authored-By |
 | GitHub 规范 | 双语 README、shields.io badge |
+| 写作任务 | 文风引用、生图 Skill 配置、默认 prompt 风格 |
+| 文风 | 指向 writing-style.md，README 写作例外规则 |
 | 项目目录 | 常用项目路径，Agent 直接定位 |
 
 安装后 **必须改** `<占位符>` 里的个人信息。
@@ -59,6 +61,21 @@ git clone https://github.com/anneheartrecord/claude-code-config.git && cd claude
 ```
 读一下 ~/.claude/writing-style.md，用我的风格写一篇关于 xxx 的文章
 ```
+
+模板内置了 8 条 **AI 痕迹禁忌**，专门针对 AI 生成文本的常见特征：
+
+| 禁忌 | AI 的坏习惯 |
+|------|-----------|
+| 转折句式 | "不是……而是……" |
+| 引号强调 | 用""包词语做标注 |
+| 括号注释 | 用()补充说明 |
+| 破折号 | 用——串句子 |
+| 三段排比 | "首先…其次…最后…"工整三件套 |
+| 总结开头 | "总的来说"、"归根结底"起手 |
+| 连接词滥用 | "然而"、"因此"、"与此同时"硬串段落 |
+| 万能升华 | "在这个XX时代，我们更需要XX" |
+
+另外限制了反问句频率：一篇文章最多 1-2 处，放在最有冲击力的位置。
 
 为什么不塞进 CLAUDE.md？写作风格只有写作时有用，放 CLAUDE.md 每次对话都加载，白白烧 token。**记忆分层，按需加载。**
 

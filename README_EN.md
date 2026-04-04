@@ -37,7 +37,7 @@ Auto-backup existing config → copy to `~/.claude/` → restart to apply.
 
 The **most important file** in Claude Code. The Agent reads it on every startup and follows what you write.
 
-Template includes 8 sections:
+Template includes 10 sections:
 
 | Section | Purpose |
 |---------|---------|
@@ -48,6 +48,8 @@ Template includes 8 sections:
 | Security Rules | No hardcoded secrets, parameterized queries only |
 | Git Rules | Commit format, no Co-Authored-By |
 | GitHub Standards | Bilingual README, shields.io badges |
+| Writing Tasks | Style reference, image generation Skill config, default prompt style |
+| Writing Style | Points to writing-style.md, README exception rules |
 | Project Directories | Frequently used paths for quick navigation |
 
 **You must replace** all `<placeholders>` with your own info after installation.
@@ -59,6 +61,21 @@ Only for people who write with Claude Code. Distill your writing style into a pr
 ```
 Read ~/.claude/writing-style.md, write an article about xxx in my style
 ```
+
+Template includes 8 **anti-AI-trace rules** targeting common AI-generated text patterns:
+
+| Rule | AI's Bad Habit |
+|------|---------------|
+| Pivot phrases | "It's not X, it's Y" |
+| Quote emphasis | Wrapping words in "" for emphasis |
+| Parenthetical notes | Using () for inline clarification |
+| Em dashes | Chaining clauses with — |
+| Triple parallelism | "First… Second… Third…" neat triplets |
+| Summary openers | "In summary", "At its core", "Fundamentally" |
+| Connector overuse | "However", "Therefore", "Meanwhile" gluing paragraphs |
+| Generic uplift | "In this era of XX, we need XX more than ever" |
+
+Also limits rhetorical questions: max 1-2 per article, placed at the most impactful position only.
 
 Why not put it in CLAUDE.md? Writing style is only useful when writing. Loading it every conversation wastes tokens. **Layer your memory, load on demand.**
 

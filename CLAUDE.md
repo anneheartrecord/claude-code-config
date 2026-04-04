@@ -40,6 +40,21 @@
 ## 写作任务规范
 - 接收到用户的核心论点后，可根据实际情况补充其他核心论点，丰富文章内容
 - 最终以 .md 文件形式放在桌面上
+- 使用用户个人文风进行写作（见下方"文风"章节）
+- 需要生成插图时，使用 `baoyu-article-illustrator` skill
+- 需要生成封面时，使用 `baoyu-cover-image` skill
+- 生图默认提示词风格（除非用户另行指定）：
+  ```
+  <在此粘贴你的生图风格 prompt，如：Minimal hand-drawn illustration, off-white paper background...>
+  ```
+
+## 文风
+- 写作风格定义文件：`~/.claude/writing-style.md`，写文章时必须先读取该文件并严格遵循
+- **README 例外**：README 文件不使用反问句，仅陈述事实，保持简洁明了的技术文档风格
+
+## API Keys
+- **<服务名称>**: `<your-api-key>`
+  - 用途: <用途说明，如 baoyu-imagine 生图>
 
 ## 常用项目目录
 - <项目名>: <项目路径>
