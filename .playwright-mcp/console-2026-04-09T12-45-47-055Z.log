@@ -1,0 +1,33 @@
+[    2148ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://x.com/i/api/1.1/strato/column/None/1511142049008869378,Mac%2FChrome,pushNotifications/clients/permissionsState:0
+[    2198ms] o: ApiError: https://x.com/i/api/1.1/strato/column/None/1511142049008869378,Mac%2FChrome,pushNotifications/clients/permissionsState HTTP-403 codes:[64]
+    at u (https://abs.twimg.com/responsive-web/client-web/main.48dc83ea.js:1:236388)
+    at https://abs.twimg.com/responsive-web/client-web/main.48dc83ea.js:1:237336
+    at https://abs.twimg.com/responsive-web/client-web/main.48dc83ea.js:1:237346
+[    2232ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://ads-api.x.com/12/measurement/dcm_local_id:0
+[    4271ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://x.com/i/api/1.1/promoted_content/log.json:0
+[    5191ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.x.com/1.1/live_pipeline/update_subscriptions:0
+[    6305ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.x.com/1.1/graphql/error_log.json:0
+[   16216ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://x.com/i/api/1.1/graphql/ces/p2:0
+[  104292ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.x.com/1.1/live_pipeline/update_subscriptions:0
+[  121213ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://x.com/i/api/1.1/graphql/ces/p2:0
+[  204285ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.x.com/1.1/live_pipeline/update_subscriptions:0
+[  241225ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://x.com/i/api/1.1/graphql/ces/p2:0
+[  304287ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.x.com/1.1/live_pipeline/update_subscriptions:0
+[  309352ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://x.com/i/api/2/notifications/all/last_seen_cursor.json:0
+[  309834ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.x.com/1.1/live_pipeline/update_subscriptions:0
+[  312186ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://api.x.com/1.1/live_pipeline/update_subscriptions:0
+[  314271ms] [WARNING] [GSI_LOGGER]: google.accounts.id.initialize() is called multiple times. This could cause unexpected behavior and only the last initialized instance will be used. @ https://accounts.google.com/gsi/client:80
+[  314400ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.x.com/graphql/_8ClT24oZ8tpylf_OSuNdg/Viewer?variables=%7B%22withCommunitiesMemberships%22%3Atrue%7D&features=%7B%22subscriptions_upsells_api_enabled%22%3Afalse%2C%22profile_label_improvements_pcf_label_in_post_enabled%22%3Atrue%2C%22responsive_web_profile_redirect_enabled%22%3Afalse%2C%22rweb_tipjar_consumption_enabled%22%3Afalse%2C%22verified_phone_label_enabled%22%3Afalse%2C%22creator_subscriptions_tweet_preview_api_enabled%22%3Atrue%2C%22responsive_web_graphql_skip_user_profile_image_extensions_enabled%22%3Afalse%2C%22responsive_web_graphql_timeline_navigation_enabled%22%3Atrue%7D&fieldToggles=%7B%22isDelegate%22%3Afalse%2C%22withAuxiliaryUserLabels%22%3Atrue%7D:0
+[  314534ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with AbortError: signal is aborted without reason @ https://accounts.google.com/gsi/client:81
+[  314534ms] [ERROR] The request has been aborted. @ https://x.com/?logout=1775739059486:0
+[  314534ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with AbortError: signal is aborted without reason @ https://accounts.google.com/gsi/client:81
+[  314534ms] [ERROR] The request has been aborted. @ https://x.com/?logout=1775739059486:0
+[  315490ms] [ERROR] The request has been aborted. @ https://x.com/?logout=1775739059486:0
+[  315490ms] [ERROR] [GSI_LOGGER]: FedCM get() rejects with AbortError: signal is aborted without reason @ https://accounts.google.com/gsi/client:81
+[  316313ms] [INFO] Banner not shown: beforeinstallpromptevent.preventDefault() called. The page must call beforeinstallpromptevent.prompt() to show the banner. @ https://x.com/?logout=1775739059486:0
+[  338005ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.postMessage call. @ https://accounts.google.com/gsi/client:364
+[  338005ms] [ERROR] Cross-Origin-Opener-Policy policy would block the window.postMessage call. @ https://accounts.google.com/gsi/client:364
+[  342377ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://ads-api.x.com/12/measurement/dcm_local_id:0
+[  343368ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://x.com/i/api/1.1/promoted_content/log.json:0
+[  353130ms] [ERROR] Failed to load resource: net::ERR_CONNECTION_CLOSED @ https://proxsee.pscp.tv/api/v2/loginTwitterToken:0
+[  356368ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.x.com/1.1/graphql/error_log.json:0

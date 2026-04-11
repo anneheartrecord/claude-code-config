@@ -110,6 +110,8 @@ claude-code-config/
 ├── CLAUDE.md                           # 全局指令模板
 ├── writing-style.md                    # 写作风格模板
 ├── mcp_servers.json                    # MCP 工具配置
+├── hooks/
+│   └── check-secrets.sh                # 敏感信息写入拦截
 ├── examples/
 │   └── project-CLAUDE.md               # 项目级配置示例
 ├── README.md                           # 中文

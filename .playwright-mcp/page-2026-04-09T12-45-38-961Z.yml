@@ -1,0 +1,58 @@
+- generic [ref=e2]:
+  - generic:
+    - generic:
+      - heading "To view keyboard shortcuts, press question mark View keyboard shortcuts" [level=2] [ref=e3]:
+        - generic [ref=e4]: To view keyboard shortcuts, press question mark
+        - link "View keyboard shortcuts" [ref=e5] [cursor=pointer]:
+          - /url: /i/keyboard_shortcuts
+      - generic [ref=e6]:
+        - banner [ref=e7]:
+          - generic [ref=e9]:
+            - generic [ref=e10]:
+              - heading "X" [level=1] [ref=e12] [cursor=pointer]:
+                - link "X" [ref=e13]:
+                  - /url: /home
+                  - img [ref=e15]
+              - navigation "Primary" [ref=e19]:
+                - link "Home" [ref=e20] [cursor=pointer]:
+                  - /url: /home
+                  - img [ref=e23]
+                - link "Search and explore" [ref=e26] [cursor=pointer]:
+                  - /url: /explore
+                  - img [ref=e29]
+                - link "Notifications" [ref=e32] [cursor=pointer]:
+                  - /url: /notifications
+                  - img [ref=e35]
+                - link "Follow" [ref=e38] [cursor=pointer]:
+                  - /url: /i/connect_people
+                  - img [ref=e41]
+                - link "Direct Messages" [ref=e44] [cursor=pointer]:
+                  - /url: /i/chat
+                  - img [ref=e47]
+                - link "Grok" [ref=e50] [cursor=pointer]:
+                  - /url: /i/grok
+                  - img [ref=e53]
+                - link "Premium" [ref=e56] [cursor=pointer]:
+                  - /url: /i/premium_sign_up
+                  - img [ref=e59]
+                - link "Profile" [ref=e62] [cursor=pointer]:
+                  - /url: /ChengXisheng
+                  - img [ref=e65]
+                - button "More menu items" [ref=e68] [cursor=pointer]:
+                  - img [ref=e71]
+              - link "Post" [ref=e75] [cursor=pointer]:
+                - /url: /compose/post
+                - img [ref=e77]
+            - button "Account menu" [ref=e82] [cursor=pointer]:
+              - generic [ref=e90]:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic "xisheng cheng":
+                        - img "xisheng cheng"
+        - main [ref=e93]:
+          - generic [ref=e99]:
+            - generic [ref=e100]: Hmm...this page doesn’t exist. Try searching for something else.
+            - link "Search" [ref=e101] [cursor=pointer]:
+              - /url: /search
+              - generic [ref=e104]: Search

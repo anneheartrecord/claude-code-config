@@ -49,6 +49,14 @@ echo "   ✅ writing-style.md → 写作风格 DNA（模板）"
 cp "$SCRIPT_DIR/mcp_servers.json" "$CLAUDE_DIR/mcp_servers.json"
 echo "   ✅ mcp_servers.json → MCP 工具配置"
 
+# 安装 hooks
+mkdir -p "$CLAUDE_DIR/hooks"
+if [ -d "$SCRIPT_DIR/hooks" ]; then
+    cp "$SCRIPT_DIR/hooks/"* "$CLAUDE_DIR/hooks/" 2>/dev/null
+    chmod +x "$CLAUDE_DIR/hooks/"*.sh 2>/dev/null
+    echo "   ✅ hooks/ → 敏感信息拦截等 Hook 脚本"
+fi
+
 echo ""
 echo "📋 项目级配置示例已放在仓库 examples/ 目录，需要时手动复制到项目根目录"
 

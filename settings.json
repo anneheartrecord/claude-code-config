@@ -38,6 +38,15 @@
             "command": "if echo \"$TOOL_INPUT\" | grep -qE 'rm\\s+-rf\\s+\\/' ; then echo 'DENY: dangerous rm command'; exit 1; fi"
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/check-secrets.sh"
+          }
+        ]
       }
     ]
   },
