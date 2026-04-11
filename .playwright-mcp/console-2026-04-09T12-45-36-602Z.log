@@ -1,7 +1,0 @@
-[    2396ms] [ERROR] Failed to load resource: the server responded with a status of 503 () @ https://ads-api.x.com/12/measurement/dcm_local_id:0
-[    2520ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://x.com/i/api/1.1/strato/column/None/1511142049008869378,Mac%2FChrome,pushNotifications/clients/permissionsState:0
-[    2555ms] o: ApiError: https://x.com/i/api/1.1/strato/column/None/1511142049008869378,Mac%2FChrome,pushNotifications/clients/permissionsState HTTP-403 codes:[64]
-    at u (https://abs.twimg.com/responsive-web/client-web/main.48dc83ea.js:1:236388)
-    at https://abs.twimg.com/responsive-web/client-web/main.48dc83ea.js:1:237336
-    at https://abs.twimg.com/responsive-web/client-web/main.48dc83ea.js:1:237346
-[    6683ms] [ERROR] Failed to load resource: the server responded with a status of 404 () @ https://api.x.com/1.1/graphql/error_log.json:0
