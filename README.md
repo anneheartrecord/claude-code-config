@@ -29,6 +29,7 @@ git clone https://github.com/anneheartrecord/claude-code-config.git && cd claude
 | allow | 全部 10 个工具 | bypassPermissions 下不需要，但切模式时兜底 |
 | deny | 12 条不可逆操作 | `rm -rf /`、`git push --force`、`git reset --hard`、`chmod 777`、`dd`、`mkfs` |
 | hooks | PreToolUse 拦截 | 二次防护，双保险拦截危险 rm 命令 |
+| hooks | Stop + PostToolUse | cmux 桌面通知：会话暂停/Agent 子任务完成时推送 |
 | attribution | 空字符串 | 关掉 commit 里的 Co-Authored-By 签名 |
 
 **核心思路：收益可以激进追求，风险必须有硬性止损。**
@@ -111,7 +112,8 @@ claude-code-config/
 ├── writing-style.md                    # 写作风格模板
 ├── mcp_servers.json                    # MCP 工具配置
 ├── hooks/
-│   └── check-secrets.sh                # 敏感信息写入拦截
+│   ├── check-secrets.sh                # 敏感信息写入拦截
+│   └── cmux-notify.sh                  # cmux 桌面通知（会话暂停/任务完成）
 ├── examples/
 │   └── project-CLAUDE.md               # 项目级配置示例
 ├── README.md                           # 中文

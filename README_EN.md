@@ -29,6 +29,7 @@ Auto-backup existing config → copy to `~/.claude/` → restart to apply.
 | allow | All 10 tools | Not needed in bypass mode, but catches you when switching modes |
 | deny | 12 irreversible operations | `rm -rf /`, `git push --force`, `git reset --hard`, `chmod 777`, `dd`, `mkfs` |
 | hooks | PreToolUse interceptor | Double protection against dangerous rm commands |
+| hooks | Stop + PostToolUse | cmux desktop notification: push when session pauses or Agent sub-task finishes |
 | attribution | Empty string | Disable Co-Authored-By in commits |
 
 **Core principle: pursue gains aggressively, but risks must have hard stop-losses.**
@@ -110,6 +111,9 @@ claude-code-config/
 ├── CLAUDE.md                           # Global instruction template
 ├── writing-style.md                    # Writing style template
 ├── mcp_servers.json                    # MCP tool config
+├── hooks/
+│   ├── check-secrets.sh                # Secret leak prevention
+│   └── cmux-notify.sh                  # cmux desktop notification (session pause / task done)
 ├── examples/
 │   └── project-CLAUDE.md               # Project-level config example
 ├── README.md                           # Chinese
