@@ -1,22 +1,30 @@
 #!/bin/bash
-# cmux notification hook for Claude Code
-# Triggers desktop notification when:
+# Claude Code notification hook
+# Triggers desktop banner + Chinese voice when:
 # - Session stops (including waiting for approval)
 # - Agent sub-task finishes
-
-# Skip if not in cmux
-[ -S /tmp/cmux.sock ] || exit 0
+#
+# terminal-notifier: desktop banner (like WeChat)
+# say: Chinese voice reminder
 
 EVENT=$(cat)
 EVENT_TYPE=$(echo "$EVENT" | jq -r '.hook_event_name // "unknown"')
 TOOL=$(echo "$EVENT" | jq -r '.tool_name // ""')
 
+notify() {
+  local msg="$1"
+  # 桌面横幅通知
+  terminal-notifier -title "Claude Code" -message "$msg" -sound Glass -ignoreDnD 2>/dev/null &
+  # 中文语音
+  say -v Tingting "$msg" &
+}
+
 case "$EVENT_TYPE" in
   "Stop")
-    cmux notify --title "Claude Code" --body "Session complete — check for pending approval"
+    notify "会话暂停了，需要你操作"
     ;;
   "PostToolUse")
-    [ "$TOOL" = "Task" ] && cmux notify --title "Claude Code" --body "Agent task finished"
+    [ "$TOOL" = "Task" ] && notify "Agent 子任务完成了"
     ;;
 esac
 
