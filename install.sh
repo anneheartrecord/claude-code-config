@@ -51,10 +51,12 @@ echo "   ✅ mcp_servers.json → MCP 工具配置"
 
 # 安装 hooks
 mkdir -p "$CLAUDE_DIR/hooks"
+mkdir -p "$CLAUDE_DIR/hooks/sounds"
 if [ -d "$SCRIPT_DIR/hooks" ]; then
-    cp "$SCRIPT_DIR/hooks/"* "$CLAUDE_DIR/hooks/" 2>/dev/null
+    cp "$SCRIPT_DIR/hooks/"*.sh "$CLAUDE_DIR/hooks/" 2>/dev/null
     chmod +x "$CLAUDE_DIR/hooks/"*.sh 2>/dev/null
-    echo "   ✅ hooks/ → 敏感信息拦截等 Hook 脚本"
+    echo "   ✅ hooks/ → 通知 + 敏感信息拦截 Hook 脚本"
+    echo "   ✅ hooks/sounds/ → 自定义提示音目录（放入 notify.m4a/.mp3/.wav 即可生效）"
 fi
 
 echo ""
