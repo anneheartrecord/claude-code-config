@@ -50,7 +50,7 @@
 
 ## 写作任务规范
 - 接收到用户的核心论点后，可根据实际情况补充其他核心论点，丰富文章内容
-- 最终以 .md 文件形式放在桌面上
+- 用户要求生成推文、长文或 Markdown 时，默认产物只是初稿，最终以 .md 文件形式放在桌面上
 - 使用用户个人文风进行写作（见下方"文风"章节）
 - 需要生成插图时，使用 `baoyu-article-illustrator` skill
 - 需要生成封面时，使用 `baoyu-cover-image` skill
@@ -58,6 +58,33 @@
   ```
   <在此粘贴你的生图风格 prompt，如：Minimal hand-drawn illustration, off-white paper background...>
   ```
+
+## 推文 / Markdown 发布流转
+- 用户让我"生成一版"、"再改一下"、"优化一下"、"去 AI 味"、"只提炼核心观点"时，一律视为草稿阶段，不要发布到 X，也不要同步到个人网站
+- 用户会手动修改最终版，并手动发送到 X；不要代替用户发布 X
+- 只有用户明确给出以下信号时，才触发个人网站同步：
+  - 明确说"final 版"、"最终版"、"定稿"、"我改好了"、"这是最终版本"
+  - 明确说"这版发 X 了"、"准备发 X"、"已经发到 X"
+  - 明确要求"同步到个人网站"、"发布到 personal-site"、"推到个人网站"、"归档到博客"
+- 如果用户只说"这版怎么样"、"再顺一下"、"重写一版"，仍然是草稿阶段，不触发 personal-site
+- 触发 personal-site 同步时，使用用户提供的最终版正文作为准入源，不要重新改写正文；最多补齐标题、摘要、tags、日期、slug 和必要 Markdown 排版
+- 如果最终版内容没有直接给出，先询问最终版文件路径或让用户粘贴最终版，不能用之前的草稿猜测最终版
+- personal-site 仓库路径：`/Users/annesheartrecord/Desktop/personal-site`
+- personal-site 文章目录：`/Users/annesheartrecord/Desktop/personal-site/src/content/blog/`
+- personal-site 博客 frontmatter 格式：
+  ```yaml
+  ---
+  title: "文章标题"
+  description: "一句话摘要"
+  date: YYYY-MM-DD
+  tags: ["标签1", "标签2"]
+  draft: false
+  ---
+  ```
+- 写入 personal-site 后，按该项目现有脚本运行校验，优先执行 `npm run build`
+- personal-site 工作区可能存在无关未跟踪文件，提交时只 stage 本次新增或修改的博客文件，不要使用 `git add -A`
+- 触发 personal-site 同步后，默认流程是：创建或更新博客 Markdown、运行构建校验、只提交本次相关博客文件、`git pull --rebase`、`git push`
+- 如果用户明确说"先别推"、"只生成文件"、"不要发布"，则只完成本地文件和校验，不 commit、不 push
 
 ## 文风
 - 写作风格定义文件：`~/.claude/writing-style.md`，写文章时必须先读取该文件并严格遵循

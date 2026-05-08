@@ -38,7 +38,7 @@ git clone https://github.com/anneheartrecord/claude-code-config.git && cd claude
 
 这是 Claude Code 里 **最重要的文件**。Agent 每次启动都会读它，你写什么它就照做。
 
-模板包含 10 个板块：
+模板包含 11 个板块：
 
 | 板块 | 作用 |
 |-----|------|
@@ -50,6 +50,7 @@ git clone https://github.com/anneheartrecord/claude-code-config.git && cd claude
 | Git 规则 | commit 格式、不加 Co-Authored-By |
 | GitHub 规范 | 双语 README、shields.io badge |
 | 写作任务 | 文风引用、生图 Skill 配置、默认 prompt 风格 |
+| 推文 / Markdown 发布流转 | 区分初稿和定稿，final 版同步到 personal-site |
 | 文风 | 指向 writing-style.md，README 写作例外规则 |
 | 项目目录 | 常用项目路径，Agent 直接定位 |
 

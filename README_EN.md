@@ -38,7 +38,7 @@ Auto-backup existing config → copy to `~/.claude/` → restart to apply.
 
 The **most important file** in Claude Code. The Agent reads it on every startup and follows what you write.
 
-Template includes 10 sections:
+Template includes 11 sections:
 
 | Section | Purpose |
 |---------|---------|
@@ -50,6 +50,7 @@ Template includes 10 sections:
 | Git Rules | Commit format, no Co-Authored-By |
 | GitHub Standards | Bilingual README, shields.io badges |
 | Writing Tasks | Style reference, image generation Skill config, default prompt style |
+| Tweet / Markdown Publishing Flow | Distinguish drafts from final versions, sync final posts to personal-site |
 | Writing Style | Points to writing-style.md, README exception rules |
 | Project Directories | Frequently used paths for quick navigation |
 
